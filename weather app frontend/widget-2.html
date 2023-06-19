@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta windspeed="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-image: url('20220715_180348.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-size: 17px;
+  }
+  .icon-bar {
+    width: 90px;
+    background-color: #555;
+}
+
+.icon-bar a {
+    display: block;
+    text-align: center;
+    padding: 16px;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 36px;
+}
+
+.icon-bar a:hover {
+    background-color: #000;
+}
+
+.active {
+    background-color: #0465aa;
+}
+
+
+  .widget-card {
+    width: 800px;
+    height: 650px;
+    margin: 0 auto;
+    padding: 20px;
+    background-image: url('IMG_20210502_055202_269.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
+    position: center;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    transform-style: preserve-3d;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+  }
+
+  .widget-card:hover {
+    transform: scale(1.1);
+  }
+
+  .widget-card:not(hover) {
+    transform: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .widget-card.widget-content {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+  }
+
+  .widget-card.widget-card.widget-content {
+    opacity: 1;
+  }
+
+  .widget-card:first-child {
+    box-shadow: 0 0 10px rgb(12, 12, 12);
+  }
+
+  .widget-card.widget-content h2 {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .widget-card .weather-info {
+    margin-top: 20px;
+  }
+
+  .widget-card .weather-info .label {
+    font-weight: bold;
+  }
+
+  .widget-header {
+    padding: 20px;
+    background-color: #4287f5;
+    color: #fff;
+  }
+
+  .widget-title {
+    margin: 0;
+    font-size: 22px;
+  }
+
+  .widget-content {
+    padding: 20px;
+    color: #555;
+  }
+
+  .graph-container {
+    height: 200px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    transform-style: preserve-3d;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+  }
+
+  .graph-container:hover {
+    transform: scale(1.1);
+  }
+
+  .graph-container:not(hover) {
+    transform: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+
+  @import url('https://fonts.googleapis.com/css?family=Satisfy|Zilla+Slab');
+
+body {
+  background-color: #643a7a;
+}
+
+.frame {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 200px;
+  margin-top: -100px;
+  margin-left: -200px;
+  border-radius: 2px;
+  box-shadow: .5rem .5rem 1rem rgba(0, 0, 0, 0.6);
+  background-color: #201c29;
+  font-family: 'Zilla Slab', serif;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.card {
+  position: fixed;
+  top: 0px;
+  left: 60px;
+  height: 230px;
+  width: 500px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: .5rem .5rem 1rem rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.card .header {
+  position: relative;
+  height: 60px;
+  width: 100%;
+  background-color: #643a7a;
+  color: #fff;
+}
+
+.card .header .big {
+  position: absolute;
+  font-family: 'Satisfy', fantasy;
+  font-size: 1.5rem;
+}
+
+.card .header .small {
+  position: absolute;
+  font-size: 1rem;
+}
+
+.card .header .title {
+  top: 12px;
+  left: 15px;
+}
+
+.card .header .date {
+  top: 2.5rem;
+  left: 15px;
+}
+
+.card .header .type {
+  top: 14px;
+  right: 15px;
+}
+
+.card .header .value {
+  position: absolute;
+  font-size: 1.5rem;
+  top: 2rem;
+  right: 15px;
+}
+
+.parameter {
+  text-align: right;
+  padding: 10px 0 14px 0;
+}
+
+.parameter span {
+  position: relative;
+  font-size: .85rem;
+  color: #606060;
+  line-height: 13px;
+  padding: 0 10px 0 25px;
+}
+
+.parameter span:before {
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  display: block;
+  content: '';
+  width: 11px;
+  height: 4px;
+  border-radius: 3px;
+}
+
+.parameter .red:before {
+  background-color: rgba(100, 58, 122, 0.7);
+}
+
+.parameter .blue:before {
+  background-color: rgba(84, 116, 150, 0.7);
+}
+
+.statistic {
+  position: relative;
+  height: 81px;
+  width: 260px;
+  margin: 0 auto;
+}
+
+.statistic .line-1,
+.statistic .line-2,
+.statistic .line-3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(255, 192, 203, 0.7);
+}
+
+.statistic .line-2 {
+  top: 40px;
+}
+
+.statistic .line-3 {
+  bottom: 0;
+}
+
+.statistic .data svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 4s linear forwards;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.statistic polyline {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.statistic .data.red polyline {
+  stroke: #643a7a;
+}
+
+.statistic .data.blue polyline {
+  stroke: #547496;
+}
+
+.statistic .data .tooltip {
+  position: absolute;
+  bottom: 13px;
+  left: 50%;
+  transform: translate3d(-50%, 10px, 0);
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 11px;
+  color: #fff;
+  padding: 8px 6px;
+  border-radius: 3px;
+  visibility: hidden;
+  opacity: 0;
+  transition: transform 0.4s ease-out 0s, opacity 0.4s ease-out 0s;
+}
+
+.statistic .data .tooltip:after {
+  position: absolute;
+  display: block;
+  content: '';
+  height: 6px;
+  width: 6px;
+  left: 50%;
+  margin-left: -3px;
+  bottom: -3px;
+  transform: rotate(45deg);
+}
+
+.statistic .data [class^="point-"] {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.statistic .data [class^="point-"]:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translate3d(-50%, 0, 0);
+}
+
+.statistic .data.red [class^="point-"],
+.statistic .data.red .tooltip,
+.statistic .data.red .tooltip:after {
+  background-color: #643a7a;
+}
+
+.statistic .data.red .point-1 {
+  left: 7px;
+  top: 43px;
+}
+
+.statistic .data.red .point-2 {
+  left: 48px;
+  top: 9px;
+}
+
+.statistic .data.red .point-3 {
+  left: 88px;
+  top: 20px;
+}
+
+.statistic .data.red .point-4 {
+  left: 128px;
+  top: 8px;
+}
+
+.statistic .data.red .point-5 {
+  left: 169px;
+  top: 35px;
+}
+
+.statistic .data.red .point-6 {
+  left: 209px;
+  top: 45px;
+}
+
+.statistic .data.red .point-7 {
+  left: 249px;
+  top: 16px;
+}
+
+.statistic .data.blue [class^="point-"],
+.statistic .data.blue .tooltip,
+.statistic .data.blue .tooltip:after {
+  background-color: #547496;
+}
+
+.statistic .data.blue .point-1 {
+  left: 7px;
+  top: 58px;
+}
+
+.statistic .data.blue .point-2 {
+  left: 48px;
+  top: 47px;
+}
+
+.statistic .data.blue .point-3 {
+  left: 88px;
+  top: 62px;
+}
+
+.statistic .data.blue .point-4 {
+  left: 128px;
+  top: 52px;
+}
+
+.statistic .data.blue .point-5 {
+  left: 169px;
+  top: 58px;
+}
+
+.statistic .data.blue .point-6 {
+  left: 209px;
+  top: 71px;
+}
+
+.statistic .data.blue .point-7 {
+  left: 249px;
+  top: 61px;
+}
+
+.days {
+  width: 280px;
+  margin: 0 auto;
+}
+
+.days .day {
+  display: block;
+  float: left;
+  width: calc(100% / 7);
+  font-size: 9px;
+  color: #949494;
+  line-height: 30px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+
+.my-table {
+  width: 700px;
+  border-collapse: collapse;
+  margin-top: 100px;
+}
+
+.my-table th,
+.my-table td {
+  padding: 10px;
+  text-align: center;
+}
+
+.my-table th {
+  background-color: #4287f5;
+  color: #fff;
+}
+
+.my-table tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+</style>
+
+<body>
+  <div class="icon-bar">
+    <a class="active" href="widget-intro.html" target="_blank"><i class="fa fa-home"></i></a>
+    <a href="widget-3.html"><i class="fa fa-search"></i></a>
+    <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox" target="_blank"><i class="fa fa-envelope"></i></a>
+    <a href="https://www.google.com/" target="_blank"><i class="fa fa-globe"></i></a>
+    <a href="#"><i class="fa fa-trash"></i></a>
+</div>
+  <div class="widget-card">
+    <div class="widget-content">
+      <div class="widget">
+        <h2 class="widget-title">Past Weather Conditions</h2>
+        <div class="widget-content">
+          <div class="graph-container">
+              <div class="frame">
+                <div class="card">
+                  <div class="header">
+                    <span class="title big">Weekly Wather Conditions</span>
+                    <span class="date small">05. - 010. June</span>
+                    <span class="type small">Averhumidity Temperature</span>
+                    <span class="value">23.2</span>
+                  </div>
+                  <div class="clearfix"></div>
+                  <div class="parameter">
+                    <span class="red">Wind Speed</span>
+                    <span class="blue">Humidity</span>
+                    
+                  </div>
+                  <div class="statistic">
+                    <div class="line-1"></div>
+                    <div class="line-2"></div>
+                    <div class="line-3"></div>
+                    <div class="data red">
+                      <svg>
+                        <polyline points="9,46 50,12 90,23 130,11 171,38 211,48 251,19"></polyline>
+                      </svg>
+                      <div class="points">
+                        <div class="point-1">
+                          <div class="tooltip">458</div>
+                        </div>
+                        <div class="point-2">
+                          <div class="tooltip">812</div>
+                        </div>
+                        <div class="point-3">
+                          <div class="tooltip">746</div>
+                        </div>
+                        <div class="point-4">
+                          <div class="tooltip">877</div>
+                        </div>
+                        <div class="point-5">
+                          <div class="tooltip">517</div>
+                        </div>
+                        <div class="point-6">
+                          <div class="tooltip">434</div>
+                        </div>
+                        <div class="point-7">
+                          <div class="tooltip">458</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="data blue">
+                      <svg>
+                        <polyline points="9,61 50,50 90,65 130,55 171,61 211,74 251,64"></polyline>
+                      </svg>
+                      <div class="points">
+                        <div class="point-1">
+                          <div class="tooltip">26</div>
+                        </div>
+                        <div class="point-2">
+                          <div class="tooltip">41</div>
+                        </div>
+                        <div class="point-3">
+                          <div class="tooltip">22</div>
+                        </div>
+                        <div class="point-4">
+                          <div class="tooltip">36</div>
+                        </div>
+                        <div class="point-5">
+                          <div class="tooltip">25</div>
+                        </div>
+                        <div class="point-6">
+                          <div class="tooltip">13</div>
+                        </div>
+                        <div class="point-7">
+                          <div class="tooltip">20</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="days">
+                    <span class="day">Mon</span>
+                    <span class="day">Tue</span>
+                    <span class="day">Wed</span>
+                    <span class="day">Thu</span>
+                    <span class="day">Fri</span>
+                    <span class="day">Sat</span>
+                    <span class="day">Sun</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+
+    <div id="table-container">
+      <div class="tableData" id="tableData"></div>
+  </div>
+
+    <script>
+      $(document).ready(function() {
+        var tableData = [
+          { windspeed: '14km/hr', humidity: 25, temperature: '24°C' },
+          { windspeed: '17km/hr', humidity: 30, temperature: '28°C' },
+          { windspeed: '18km/hr', humidity: 25, temperature: '22°C' },
+          { windspeed: '15km/hr', humidity: 30, temperature: '23°C' },
+          { windspeed: '20km/hr', humidity: 20, temperature: '20°C' },
+        ];
+      
+        var $table = $('<table>').addClass('my-table');
+        var $thead = $('<thead>');
+        var $tbody = $('<tbody>');
+      
+        // Create table header
+        var $headerRow = $('<tr>');
+        $headerRow.append('<th>windspeed</th>');
+        $headerRow.append('<th>humidity</th>');
+        $headerRow.append('<th>temperature</th>');
+        $thead.append($headerRow);
+      
+        // Create table rows
+        tableData.forEach(function(data) {
+          var $row = $('<tr>');
+          $row.append('<td>' + data.windspeed + '</td>');
+          $row.append('<td>' + data.humidity + '</td>');
+          $row.append('<td>' + data.temperature + '</td>');
+      
+          var windspeedValue = parseInt(data.windspeed);
+          var temperatureValue = parseInt(data.temperature);
+      
+          if (!isNaN(windspeedValue) && !isNaN(temperatureValue) && temperatureValue > 40 && windspeedValue > 20) {
+            alert('Dangerous weather conditions!');
+          }
+      
+          $tbody.append($row);
+        });
+      
+        // Append the header and rows to the table
+        $table.append($thead);
+        $table.append($tbody);
+      
+        // Append the table to a container element
+        $('#table-container').append($table);
+      });
+      
+      
+      
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Query Page</title>
+</head>
+<style>
+  body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-image: url('20220715_180348.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-size: 17px;
+  }
+
+  .icon-bar {
+    width: 90px;
+    background-color: #555;
+  }
+
+  .icon-bar a {
+    display: block;
+    text-align: center;
+    padding: 16px;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 36px;
+  }
+
+  .icon-bar a:hover {
+    background-color: #000;
+  }
+
+  .active {
+    background-color: #0465aa;
+  }
+
+  .widget-cover {
+    width: 500px;
+    height: 350px;
+    margin: 0 auto;
+    padding: 20px;
+    background-image: url('20220715_191727.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .widget-cover:first-child {
+    box-shadow: 0 0 10px rgb(10, 10, 10);
+  }
+
+  .widget-cover.widget-content h2 {
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+
+  .widget-cover.widget-content {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+  }
+  .widget-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    perspective: 1000px;
+  }
+
+  .widget-card:hover {
+    transform: scale(1.1);
+  }
+
+
+    .form {
+      background-color: #fff;
+      width: 400px;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgb(12, 12, 12);
+      margin-top: 50px;
+      text-align: center;
+    }
+    input[type=text] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #4287f5;
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0465aa;
+    }
+</style>    
+<body>
+    <div class="icon-bar">
+      <a class="active" href="widget-intro.html" target="_blank"><i class="fa fa-home"></i></a>
+      <a href="widget-3.html"><i class="fa fa-search"></i></a>
+      <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox" target="_blank"><i class="fa fa-envelope"></i></a>
+      <a href="https://www.google.com/" target="_blank"><i class="fa fa-globe"></i></a>
+      <a href="weather app frontend/widget-3.html"><i class="fa fa-trash"></i></a>
+    </div>
+    <div class="widget-card widget-cover">
+      <div class="widget-cover-content">
+    <form id="query-form" method="POST" action="/search" autocomplete="off">
+      <h2>Search Users</h2>
+      <input type="text" id="email-id" placeholder="Enter email id...">
+      <input type="text" id="name" placeholder="Enter your name...">
+      <input type="text" id="location" placeholder="Enter your location...">
+      <textarea id="description" placeholder="Enter query description..." style="width: 500px;"></textarea>
+      <br><button type="submit">submit</button>
+    </form>
+    </div>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      $('#query-form').submit(function(event) {
+        event.preventDefault();
+        var queryText = $('#query-text').val();
+        var name = $('#name').val();
+        var location = $('#location').val();
+        var description = $('#description').val();       
+        alert(`Your query: ${queryText}\nYour name: ${name}\nYour location: ${location}\nQuery description: ${description}`);
+      });
+      
+    </script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="weather app frontend/widget-intro.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chandigarh</title>
+</head>
+<style>
+    body {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-image: url('20220715_180348.jpg') ;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-size: 17px;
+    }
+    .icon-bar {
+        width: 90px;
+        background-color: #555;
+    }
+
+    .icon-bar a {
+        display: block;
+        text-align: center;
+        padding: 16px;
+        transition: all 0.3s ease;
+        color: white;
+        font-size: 36px;
+    }
+
+    .icon-bar a:hover {
+        background-color: #000;
+    }
+
+    .active {
+        background-color: #0465aa;
+    }
+
+    .widget-card {
+        width: 500px;
+        height: 350px;
+        margin: 0 auto;
+        padding: 20px;
+        background-image: url('20220228_182516.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 5px;
+        position: center;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+        text-align: center;
+        transform-style: preserve-3d;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out;
+    }
+
+    .widget-card:hover {
+        transform: scale(1.1);
+    }
+
+    .widget-card:not(hover) {
+        transform: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .widget-card.widget-content {
+        opacity: 0;
+        transition: opacity 0.3s ease-in;
+    }
+
+    .widget-card.widget-card.widget-content {
+        opacity: 1;
+    }
+
+    .widget-card:first-child {
+        box-shadow: 0 0 10px rgb(12, 12, 12);
+    }
+
+    .widget-card.widget-content h2 {
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .widget-card .weather-info {
+        margin-top: 20px;
+    }
+
+    .widget-card .weather-info .label {
+        font-weight: bold;
+    }
+
+    .widget-card .weather-info .value {
+        margin-left: 10px;
+    }
+
+
+    .widget-card:first-child .weather-icon {
+        font-size: 60px;
+        text-align: center;
+    }
+
+    .widget-card:first-child .weather-icon-container {
+        position: relative;
+        margin-bottom: 20px;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .widget-card:first-child .weather-icon-container::before {
+        content: attr(data-icon);
+        display: block;
+        font-size: 100px;
+        color: #f50101;
+        transition: color 1s ease;
+    }
+
+    .widget-card:first-child .weather-icon-container:hover::before {
+        color: #120f0100;
+
+    }
+
+    .widget-card:first-child .weather-icon-container::after {
+        content: attr(data-text);
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        visibility: collapse;
+        background-color: rgba(12, 12, 12, 0.8);
+        color: #ffffff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        transition: opacity 1s ease, visibility 0s linear 0.3s;
+    }
+
+    .widget-card:first-child .weather-icon-container:hover::after {
+        opacity: 1;
+        visibility: visible;
+        transition-delay: 0s;
+    }
+
+    .widget-card:first-child {
+        position: relative;
+    }
+
+    .widget-card:first-child .flag {
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        width: 30px;
+        height: 20px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        box-shadow: 0 0 5px #0d0b05;
+    }
+    .button {
+        background-color: #120f0100;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        -webkit-transition-duration: 0.4s; 
+        transition-duration: 0.4s;
+      }
+</style>    
+<body>
+    <div class="widget-card">
+        <div class="widget-content" style="color: #ffffff;">
+            <div class="location" style="font-size: large;">Chandigarh,India</div>
+                <br>
+                <p><span class="label">Temperature:</span> <span class="value">28°C</span></p>
+                <p><span class="label">Humidity:</span> <span class="value">50%</span></p>
+                <p><span class="label">Wind Speed:</span> <span class="value">12 km/h</span></p>
+            </div>
+            <div class="weather-icon">
+                <div class="weather-icon-container" data-icon="⛅" data-text="Partly Cloudy"></div>
+                <div class="flag" style="background-image: url('India Grunge Flag by think0 on DeviantArt.jpeg');">
+                </div>
+           
+            </div>
+            <button id="custom-button" class="button button"><a href="widget-2.html" target="_blank" style="color: #ffffff;">For more details...</a></button>
+
+           
+    </div>        
+    <div class="icon-bar">
+        <a class="active" href="widget-intro.html" target="_blank"><i class="fa fa-home"></i></a>
+        <a href="widget-3.html"><i class="fa fa-search"></i></a>
+        <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox" target="_blank"><i class="fa fa-envelope"></i></a>
+        <a href="https://www.google.com/" target="_blank"><i class="fa fa-globe"></i></a>
+        <a href="#"><i class="fa fa-trash"></i></a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+   
+var customBtn = $("#custom-button");
+
+customBtn.attr("title", "Click here for more information"); 
+customBtn.css("background-color", "#0e0e0e0e"); 
+customBtn.find("a").css("text-decoration", "none"); 
+
+</script>
+</body>
+</html>
